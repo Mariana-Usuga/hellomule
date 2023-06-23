@@ -11,9 +11,34 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
 	<db:mysql-config name="MySQL_Configuration" doc:name="MySQL Configuration"/>
 	<db:mysql-config name="MySQL_Configuration1" host="mudb.learn.mulesoft.com" port="3306" user="mule" password="mule" database="training" doc:name="MySQL Configuration"/>
+	<db:template-query name="Template_Query" doc:name="Template Query">
+		<db:parameterized-query><![CDATA[SELECT * FROM american WHERE id = :id]]></db:parameterized-query>
+		<db:in-param name="id" defaultValue="attributes.uriParams.id"/>
+	</db:template-query>
+	<db:template-query name="Template_Query1" doc:name="Template Query">
+		<db:parameterized-query><![CDATA[SELECT * 
+FROM american
+WHERE ID = :ID]]></db:parameterized-query>
+		<db:in-param name="ID" type="INTEGER" defaultValue="attributes.queryParams.ID"/>
+	</db:template-query>
+	<db:template-query name="Template_Query2" doc:name="Template Query">
+		<db:parameterized-query><![CDATA[SELECT * 
+FROM american
+WHERE ID = :ID]]></db:parameterized-query>
+		<db:in-param name="ID" defaultValue="attributes.queryParams.ID"/>
+	</db:template-query>
+	<db:template-query name="Template_Query3" doc:name="Template Query">
+		<db:parameterized-query/>
+	</db:template-query>
+	<db:template-query name="Template_Query4" doc:name="Template Query">
+		<db:parameterized-query><![CDATA[SELECT * 
+FROM american
+WHERE ID = :ID]]></db:parameterized-query>
+	</db:template-query>
+	<http:listener-config name="HTTP_Listener_Configuration1" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
 	<!--<db:mysql-config name="MySQL_Configuration" doc:name="MySQL Configuration"/>-->
 	<flow name="hellomuleFlow">
-		<http:listener config-ref="HTTP_Listener_Configuration" path="/Flights" doc:name="HTTP"/>
+		<http:listener config-ref="HTTP_Listener_Configuration1" path="/Flights" doc:name="HTTP" metadata:id="ba55bb2d-2095-42f5-8964-5c3b928c09e3"/>
 		<db:select config-ref="MySQL_Configuration1" doc:name="Select Flights">
 			<db:parameterized-query><![CDATA[SELECT * 
 FROM american]]></db:parameterized-query>
