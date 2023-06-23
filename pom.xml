@@ -19,13 +19,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.16</version>
         </dependency>
-    <!-- <dependency>
+    <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-spring-config</artifactId>
             <version>3.9.0</version>
             <scope>provided</scope>
         </dependency>
-    <dependency>
+    <!--<dependency>
             <groupId>com.mulesoft.weave</groupId>
             <artifactId>mule-plugin-weave</artifactId>
             <version>3.9.5-20220920</version>
